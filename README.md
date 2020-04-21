@@ -1,5 +1,5 @@
 # MiMiYaHelper
-Douyin sharp tool,floating window,copy sharp url to get raw video
+DDouyin sharp tool,floating window,copy sharp url to get raw video
 
 
 
