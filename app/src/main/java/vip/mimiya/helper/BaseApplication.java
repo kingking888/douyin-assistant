@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,8 +47,10 @@ public class BaseApplication extends Application {
                     CharSequence text = clipData.getItemAt(0).getText();
                     pasteString = text.toString();
                 }
-
+                if (TextUtils.isEmpty(pasteString)) return;
                 Toast.makeText(BaseApplication.this, "收到任务:[" + pasteString + "]", Toast.LENGTH_LONG).show();
+
+                //TODO POST
             }
         });
     }
