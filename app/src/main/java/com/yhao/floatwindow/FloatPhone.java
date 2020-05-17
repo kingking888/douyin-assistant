@@ -3,8 +3,11 @@ package com.yhao.floatwindow;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 /**
  * Created by yhao on 17-11-14.
@@ -29,9 +32,11 @@ class FloatPhone extends FloatView {
         mLayoutParams = new WindowManager.LayoutParams();
         mLayoutParams.format = PixelFormat.RGBA_8888;
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                //| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mLayoutParams.windowAnimations = 0;
+
+
     }
 
     @Override
@@ -43,6 +48,7 @@ class FloatPhone extends FloatView {
     @Override
     public void setView(View view) {
         mView = view;
+        mView.setFocusableInTouchMode(true);
     }
 
     @Override
@@ -52,6 +58,25 @@ class FloatPhone extends FloatView {
         mLayoutParams.y = mY = yOffset;
     }
 
+    public void addFocus() {
+        WindowManager.LayoutParams lp = (WindowManager.LayoutParams) mView.getLayoutParams();
+        lp.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                //| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
+        //mView.setLayoutParams(lp);
+        mView.requestFocus();
+        mWindowManager.updateViewLayout(mView, lp);
+    }
+
+    public void clearFocus() {
+        WindowManager.LayoutParams lp = (WindowManager.LayoutParams) mView.getLayoutParams();
+        lp.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
+        //mView.setLayoutParams(lp);
+        mView.requestFocus();
+        mWindowManager.updateViewLayout(mView, lp);
+    }
 
     @Override
     public void init() {

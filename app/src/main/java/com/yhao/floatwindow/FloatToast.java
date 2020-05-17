@@ -66,6 +66,16 @@ class FloatToast extends FloatView {
         }
     }
 
+    @Override
+    void addFocus() {
+
+    }
+
+    @Override
+    void clearFocus() {
+
+    }
+
 
     private void initTN() {
         try {

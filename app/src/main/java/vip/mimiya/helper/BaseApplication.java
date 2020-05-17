@@ -38,6 +38,8 @@ public class BaseApplication extends Application {
     private ClipboardManager clipboardManager;
     private boolean status = false;
     private String lastPasteString;
+    //private FloatWindow.B floatWindows;
+    private EditText postEditText;
 
     @Override
     public void onCreate() {
@@ -72,54 +74,31 @@ public class BaseApplication extends Application {
         LayoutInflater inflater = LayoutInflater.from(this);
         View floatLayout = inflater.inflate(R.layout.input_layout, null);
 
-        final EditText postEditText = floatLayout.findViewById(R.id.post_editText);
+        postEditText = floatLayout.findViewById(R.id.post_editText);
         Button postButton = floatLayout.findViewById(R.id.post_button);
+
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sharp_url = postEditText.getText().toString();
-                postEditText.setText("");
 
+                FloatWindow.get().addFocus();
+                postEditText.setEnabled(true);
+                postEditText.setFocusable(true);
+                postEditText.setFocusableInTouchMode(true);
+                postEditText.requestFocus();
                 postEditText.findFocus();
 
-                ClipData clipData = clipboardManager.getPrimaryClip();
-                String pasteString = "";
-                if (clipData != null && clipData.getItemCount() > 0) {
-                    CharSequence text = clipData.getItemAt(0).getText();
-                    pasteString = text.toString();
-                }
-                // if (!status) return;
-                if (TextUtils.isEmpty(pasteString)) return;
+                String sharp_url = postEditText.getText().toString();
+                postEditText.setText("aaa");
+                handler.sendEmptyMessage(101);
 
-                clipboardManager.setPrimaryClip(ClipData.newPlainText("aaa", "bbb"));
-
-                if (!TextUtils.isEmpty(lastPasteString) && lastPasteString.equals(pasteString))
-                    return;
-
-
-                lastPasteString = pasteString;
-
-                String pattern = "(https://v.douyin.com).*/";
-                Pattern r = Pattern.compile(pattern);
-                Matcher m = r.matcher(pasteString);
-
-                String shareUrl = null;
-                if (m.find()) {
-                    shareUrl = m.group(0);
-                    postShareUrl(shareUrl);
-                    Toast.makeText(BaseApplication.this, "收到任务:[" + pasteString + "]", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(BaseApplication.this, "NO MATCH!", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
         ImageView imageView = new ImageView(getApplicationContext());
         imageView.setImageResource(R.drawable.icon);
 
-        FloatWindow
-                .with(getApplicationContext())
-                .setView(floatLayout)
+        FloatWindow.with(getApplicationContext()).setView(floatLayout)
                 //.setWidth(150)                               //设置控件宽高
                 .setHeight(Screen.width, 0.2f)
                 .setX(0)                                   //设置控件初始位置
@@ -217,6 +196,45 @@ public class BaseApplication extends Application {
                 case 100:
                     String result = (String) msg.obj;
                     Toast.makeText(BaseApplication.this, result, Toast.LENGTH_LONG).show();
+                    break;
+                case 101:
+                    try {
+                        ClipData clipData = clipboardManager.getPrimaryClip();
+
+                        String pasteString = "";
+                        if (clipData != null && clipData.getItemCount() > 0) {
+                            CharSequence text = clipData.getItemAt(0).getText();
+                            pasteString = text.toString();
+                        }
+                        // if (!status) return;
+                        if (TextUtils.isEmpty(pasteString)) return;
+
+                        clipboardManager.setPrimaryClip(ClipData.newPlainText("aaa", "" + System.currentTimeMillis()));
+
+                        if (!TextUtils.isEmpty(lastPasteString) && lastPasteString.equals(pasteString))
+                            return;
+
+
+                        lastPasteString = pasteString;
+
+                        String pattern = "(https://v.douyin.com).*/";
+                        Pattern r = Pattern.compile(pattern);
+                        Matcher m = r.matcher(pasteString);
+
+                        String shareUrl = null;
+                        if (m.find()) {
+                            shareUrl = m.group(0);
+                            postShareUrl(shareUrl);
+                            Toast.makeText(BaseApplication.this, "收到任务:[" + pasteString + "]", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(BaseApplication.this, "NO MATCH!", Toast.LENGTH_SHORT).show();
+                        }
+                    } finally {
+                        postEditText.setText("");
+                        postEditText.clearFocus();
+                        postEditText.setEnabled(false);
+                        FloatWindow.get().clearFocus();
+                    }
                     break;
                 default:
                     break;

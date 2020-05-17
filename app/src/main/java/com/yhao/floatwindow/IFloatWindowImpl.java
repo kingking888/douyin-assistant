@@ -123,6 +123,17 @@ public class IFloatWindowImpl extends IFloatWindow {
     }
 
     @Override
+    public void addFocus() {
+        mFloatView.addFocus();
+    }
+
+    @Override
+    public void clearFocus() {
+        mFloatView.clearFocus();
+    }
+
+
+    @Override
     public void updateX(int x) {
         checkMoveType();
         mB.xOffset = x;

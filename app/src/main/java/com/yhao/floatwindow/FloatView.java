@@ -1,6 +1,9 @@
 package com.yhao.floatwindow;
 
+import android.content.Context;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * Created by yhao on 17-11-14.
@@ -35,4 +38,8 @@ abstract class FloatView {
     int getY() {
         return 0;
     }
+
+    abstract void addFocus();
+
+    abstract void clearFocus();
 }
