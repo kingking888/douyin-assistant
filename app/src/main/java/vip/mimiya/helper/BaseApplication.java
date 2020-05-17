@@ -189,7 +189,7 @@ public class BaseApplication extends Application {
                 String json = String.format("{\"url\":\"%s\"}", url);
                 RequestBody body = RequestBody.create(json, JSON);
                 Request request = new Request.Builder()
-                        .url("http://27.115.87.106:5015/api/caches/video/clone/" + String.valueOf(System.currentTimeMillis()))
+                        .url("http://*******:5015/api/caches/video/clone/" + String.valueOf(System.currentTimeMillis()))
                         .post(body)
                         .build();
                 Message msg = handler.obtainMessage(100);
