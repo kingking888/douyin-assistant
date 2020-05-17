@@ -4,8 +4,9 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="60dp"
+        android:layout_width="81dp"
         android:layout_height="wrap_content"
+        android:background="#05000000"
         android:orientation="horizontal">
 
         <EditText
