@@ -8,6 +8,5 @@ In Android 10 cannot listen to the clipboard,so we need a EditText on top Window
 Floating window button,click it to download raw video to self cloud.
 
 
-##
 
-![](./snapshoot/WX20200517-173855@2x.png)
+![WX20200517-173855@2x.png](./snapshoot/WX20200517-173855@2x.png)
