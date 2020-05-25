@@ -14,7 +14,7 @@ Floating window button,click it to download raw video to self cloud.
 </div>
 
 ## 服务端加解密调用接口文档  Gorgon Xlog TTEncrypt
-### 后台接口Java开发,暂时不放,有需要私聊
+### 后台接口Java开发,不对外,有需要私聊
 
 ```python
 
