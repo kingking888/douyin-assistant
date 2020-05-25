@@ -39,7 +39,7 @@ print(device_params)
 millis = int(time.time() * 1000)
 millis_short = int(millis / 1000)
 
-sec_user_id = 'MS4wLjABAAAAxcFxZ_rO4A_KJdKlpxkbaf3338mcezcAH6tc8xvev5M'
+sec_user_id = '***************************************'
 
 params = dict([m.split("=") for m in device_params["data"].split("&")])
 
@@ -49,7 +49,7 @@ url = f"https://aweme.snssdk.com/aweme/v1/aweme/favorite/?invalid_item_count=0&i
       f"ts={str(millis_short)}&app_type=normal&ac=wifi&host_abi=armeabi-v7a&update_version_code=10609900&channel=xiaomi&" \
       f"_rticket={str(millis)}&device_platform=android&iid={params['iid']}&version_code=100600&" \
       f"cdid={params['cdid']}&openudid={params['openudid']}&device_id={params['device_id']}&" \
-      f"resolution=1080*1920&os_version=6.0.1&language=zh&device_brand=Xiaomi&aid=1128&mcc_mnc=46003"
+      f"resolution=1080*1920&os_version=6.0.1&language=zh&device_brand=Xiaomi&aid=1128"
 
 data = {"url": url, "millis": millis_short}
 gorgonInfo = requests.post("http://127.0.0.1:5016/gorgon", json=data).json()
@@ -61,7 +61,7 @@ headers = {
 	"sdk-version": "1",
 	"Host": "aweme.snssdk.com",
 	"Connection": "Keep-Alive",
-	"User-Agent": "okhttp/3.10.0.1",
+	"User-Agent": gorgonInfo["agent"],
 	"X-Gorgon": gorgonInfo["gorgon"],
 	"X-Khronos": str(gorgonInfo["khronos"])
 }
