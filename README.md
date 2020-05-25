@@ -90,7 +90,7 @@ print(dedata)
 //todo
 
 
-``'
+```
 
 
 
@@ -105,11 +105,9 @@ print(dedata)
 
 若有侵权请联系删除。
 
-## 支持 (support)
+## 支持
 
-  * **如果您使用的还算顺手, 可以支持一杯咖啡予以鼓励.**
-
-  * **Encourage the price of a cup of coffee.**
+  * **您的赞赏是让我加快开发进度的最大鼓励.**
 
 <div>
   <a><img src="https://github.com/satng/images/blob/master/WX20200520-084311%402x.png" height="30%" width="30%"></a>           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
