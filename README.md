@@ -23,6 +23,8 @@ import time
 # 注册新设备
 new_device = requests.post("http://127.0.0.1:5016/device_register/", json={}).json()
 print(new_device)
+#{'status': 'ok', 'data': {'device_id': '***', 'uuid': '***', 'openudid': '***', 'cdid': '***', 'mc': '***', 'sim_serial_number': '***', 'clientudid': '***', 'req_id': '***', 'build_serial': '***', 'first_reg_time': ***, 'install_id': '***', 'new_user': ***, 'channel': '***', 'os_api': '***', 'device_type': '***'}, 'agent': '***'}
+
 
 device_id = new_device["data"]["device_id"]
 print(device_id)
@@ -55,6 +57,7 @@ data = {"url": url, "millis": millis_short}
 gorgonInfo = requests.post("http://127.0.0.1:5016/gorgon", json=data).json()
 
 print(url, "\n", gorgonInfo)
+#{'khronos': 1590373639, 'gorgon': '040100800800ccfdf0b233263c9252381b50880d73efe2b7af06', 'status': 'ok'}
 
 headers = {
 	"X-SS-REQ-TICKET": str(millis),
@@ -72,9 +75,12 @@ print(response.text)
 # xlog 加密
 endata = requests.post("http://127.0.0.1:5016/xlog/en", data="加密字符串密密密密密密密密密密密密密密密密密".encode("utf-8")).json()
 print(endata)
+#{'message': '020ef5297ff661fc03a01abbada969a0a65eb130d5e858c06f03fd2712a2f8a51af34581d895f924455793e99ca7c276aac6afd7ef6c404ecaa76691c2a2bcd7d0f37a7370e28599f87f81468e459c9947b0f5ffbf', 'status': 'ok'}
+
 # xlog 解密
 dedata = requests.post("http://127.0.0.1:5016/xlog/de", data=endata["message"].encode("utf-8")).json()
 print(dedata)
+#{'message': '加密字符串密密密密密密密密密密密密密密密密密', 'status': 'ok'}
 
 ```
 
