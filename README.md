@@ -13,8 +13,11 @@ Floating window button,click it to download raw video to self cloud.
   <a><img src="./snapshoot/WX20200517-173855@2x.png" height="30%" width="30%"></a>           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 
+## TTiktok 1105 滑动验证码接口
+##### 提供滑块x坐标识别 99.99%准确率
+
 ## 服务端加解密调用接口文档  Gorgon Xlog TTEncrypt
-##### 后台接口Java开发,不对外,有需要私聊
+##### 后台接口Java开发,个人免费用,不对外,有需要私聊
 
 ```python
 
@@ -46,10 +49,10 @@ sec_user_id = '***************************************'
 
 params = dict([m.split("=") for m in device_params["data"].split("&")])
 
-url = f"https://aweme.snssdk.com/aweme/v1/aweme/favorite/?invalid_item_count=0&is_hiding_invalid_item=0&max_cursor=0&" \
+url = f"https://***.***.com/aweme/v1/**/favorite/?invalid_item_count=0&is_hiding_invalid_item=0&max_cursor=0&" \
       f"sec_user_id={sec_user_id}&count=20&os_api={params['os_api']}&device_type={params['device_type']}&" \
-      f"ssmix=a&manifest_version_code=100601&dpi=480&uuid={params['uuid']}&app_name=aweme&version_name=10.6.0&" \
-      f"ts={str(millis_short)}&app_type=normal&ac=wifi&host_abi=armeabi-v7a&update_version_code=10609900&channel=xiaomi&" \
+      f"ssmix=a&manifest_version_code=100601&dpi=480&uuid={params['uuid']}&app_name=***&version_name=11.1.0&" \
+      f"ts={str(millis_short)}&app_type=normal&ac=wifi&host_abi=armeabi-v7a&update_version_code==***&&channel=xiaomi&" \
       f"_rticket={str(millis)}&device_platform=android&iid={params['iid']}&version_code=100600&" \
       f"cdid={params['cdid']}&openudid={params['openudid']}&device_id={params['device_id']}&" \
       f"resolution=1080*1920&os_version=6.0.1&language=zh&device_brand=Xiaomi&aid=1128"
@@ -76,7 +79,7 @@ print(response.text)
 # xlog 加密
 endata = requests.post("http://127.0.0.1:5016/xlog/en", data="加密字符串密密密密密密密密密密密密密密密密密".encode("utf-8")).json()
 print(endata)
-#{'message': '020ef5297ff661fc03a01abbada969a0a65eb130d5e858c06f03fd2712a2f8a51af34581d895f924455793e99ca7c276aac6afd7ef6c404ecaa76691c2a2bcd7d0f37a7370e28599f87f81468e459c9947b0f5ffbf', 'status': 'ok'}
+#{'message': '020ef5297ff661fc03a01acd7d0f37a7370e28599f87f81468e459c9947b0f5ffbf', 'status': 'ok'}
 
 # xlog 解密
 dedata = requests.post("http://127.0.0.1:5016/xlog/de", data=endata["message"].encode("utf-8")).json()
