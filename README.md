@@ -1,4 +1,8 @@
 # MiMiYaHelper
+
+## 感谢两位朋友的赞助,源码已经送出,此项目不在更新.记于6月5号
+
+
 DDouyin sharp tool,floating window,copy sharp url to get raw video
 
 
