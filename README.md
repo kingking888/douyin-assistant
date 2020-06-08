@@ -1,6 +1,5 @@
 # MiMiYaHelper
 
-## 感谢两位朋友的赞助,源码已经送出,此项目不在更新.记于6月5号
 
 
 DDouyin sharp tool,floating window,copy sharp url to get raw video
@@ -21,7 +20,7 @@ Floating window button,click it to download raw video to self cloud.
 ##### 提供滑块x坐标识别 99.99%准确率
 
 ## 服务端加解密调用接口文档  Gorgon Xlog TTEncrypt
-##### 后台接口Java开发,个人免费用,不对外,有需要私聊
+##### 后台接口Java开发,个人只需赞赏分摊一点服务器费用就可以免费接口调用,有需要私聊
 
 ```python
 
@@ -102,7 +101,7 @@ print(dedata)
 
 
 
-
+#### 感谢两位朋友的赞赏,用来学习交流的源码已经分享,源码将不再过多分享了。
 
 ## 协议
 
