@@ -91,17 +91,32 @@ print(dedata)
 
 ```
 
-### 服务端功能调用接口文档 Login SmsCode UserInfo ExtractShareUrl DownloadVideo SaveVideo PushVideo 
+### 服务端功能调用接口文档 ~~Login SmsCode UserInfo~~ ExtractShareUrl DownloadVideo SaveVideo PushVideo
 ```
 //todo
 
+# 发送短信验证码
+sms_result = requests.get("http://127.0.0.1:5016/send_sms/180********").json()
+print(sms_result)
+#{'status': 'ok'}
+
+# 登录
+login_result = requests.get("http://127.0.0.1:5016/login_sms/180********/7422").json()
+print(login_result)
+# {'status': 'ok', 'data': { 'x_tt_token': '********', 'session_key': '********'}}
+
+# getUserInfo token有效期很长
+login_result = requests.get("http://127.0.0.1:5016/user_info/180********").json()
+print(login_result)
+# {'status': 'ok', 'data': { 'x_tt_token': '********', 'session_key': '********'}}
+
 
 ```
 
 
 
 
-#### 感谢两位朋友的赞赏,用来学习交流的源码已经分享,源码将不再过多分享了。
+#### 感谢两位朋友的赞赏,用来学习交流的TTiktok源码已经分享,源码将不再过多分享了,DDouyin部分有断续。
 
 ## 协议
 

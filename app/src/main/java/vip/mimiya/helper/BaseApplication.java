@@ -24,6 +24,7 @@ import com.yhao.floatwindow.Screen;
 import com.yhao.floatwindow.ViewStateListener;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -164,11 +165,15 @@ public class BaseApplication extends Application {
             @Override
             public void run() {
                 MediaType JSON = MediaType.get("application/json; charset=utf-8");
-                OkHttpClient client = new OkHttpClient();
+                OkHttpClient client = new OkHttpClient.Builder()
+                        .writeTimeout(30, TimeUnit.SECONDS)
+                        .connectTimeout(30, TimeUnit.SECONDS)//设置连接超时时间
+                        .readTimeout(30, TimeUnit.SECONDS)//设置读取超时时间
+                        .build();
                 String json = String.format("{\"url\":\"%s\"}", url);
                 RequestBody body = RequestBody.create(json, JSON);
                 Request request = new Request.Builder()
-                        .url("http://************:5015/api/caches/video/clone/" + String.valueOf(System.currentTimeMillis()))
+                        .url("http://27.115.87.106:5015/api/caches/video/clone/" + String.valueOf(System.currentTimeMillis()))
                         .post(body)
                         .build();
                 Message msg = handler.obtainMessage(100);
