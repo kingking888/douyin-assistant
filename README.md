@@ -10,12 +10,13 @@ Floating window button,click it to download raw video to self cloud.
 ## What to do??
 
 One key operation copy other people's videos,and publish yourself at the same time.
-
+<br/>
 1、
 一键复制个人大号的视频,同时发布到自己的小号作品集中。
+<br/>
 2、
 个人大号发布的视频,自动同频到自己其它帐号作品集中。
-
+<br/>
 请正确使用,注意版权问题,本工具只提供个人学习交流使用.
 
 ##
