@@ -1,15 +1,22 @@
 # MiMiYaHelper
 
-
-
 DDouyin sharp tool,floating window,copy sharp url to get raw video
-
 
 
 In Android 10 cannot listen to the clipboard,so we need a EditText on top Windows,hook global focus. 
 
 Floating window button,click it to download raw video to self cloud.
 
+## What to do??
+
+One key operation copy other people's videos,and publish yourself at the same time.
+
+1、
+一键复制个人大号的视频,同时发布到自己的小号作品集中。
+2、
+个人大号发布的视频,自动同频到自己其它帐号作品集中。
+
+请正确使用,注意版权问题,本工具只提供个人学习交流使用.
 
 ##
 <div>
@@ -110,7 +117,7 @@ login_result = requests.get("http://127.0.0.1:5016/user_info/180********").json(
 print(login_result)
 # {'status': 'ok', 'data': { 'x_tt_token': '********', 'session_key': '********'}}
 
-
+# video_raw_url 无水印视频
 headers={"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOlsiMTExMSIsIjE0Il0sImV4cCI6MTU5MjMxMjk4NX0.HK5yeFExgQikvk0NtQKHvWfM88U_Fx5jbhq4bqZo148"}
 json={"share_url":"https://v.douyin.com/Jdpsx7Q/"}
 video_info_result = requests.post("http://47.98.199.11:5008/do/video_raw_url",headers=headers,json=json).json()
