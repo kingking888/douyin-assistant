@@ -46,31 +46,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         clipboardManager = (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
-        clipboardManager.addPrimaryClipChangedListener(new ClipboardManager.OnPrimaryClipChangedListener() {
-            @Override
-            public void onPrimaryClipChanged() {
-                ClipData clipData = clipboardManager.getPrimaryClip();
-                String pasteString = "";
-                if (clipData != null && clipData.getItemCount() > 0) {
-                    CharSequence text = clipData.getItemAt(0).getText();
-                    pasteString = text.toString();
-                }
-                if (!status) return;
-                if (TextUtils.isEmpty(pasteString)) return;
-
-                String pattern = "(https://v.douyin.com).*/";
-                Pattern r = Pattern.compile(pattern);
-                Matcher m = r.matcher(pasteString);
-                String shareUrl = null;
-                if (m.find()) {
-                    shareUrl = m.group(0);
-                    postShareUrl(shareUrl);
-                    Toast.makeText(BaseApplication.this, "收到任务:[" + pasteString + "]", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(BaseApplication.this, "NO MATCH!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         LayoutInflater inflater = LayoutInflater.from(this);
         View floatLayout = inflater.inflate(R.layout.input_layout, null);
@@ -125,7 +100,8 @@ public class BaseApplication extends Application {
                 // if (!status) return;
                 if (TextUtils.isEmpty(pasteString)) return;
 
-                clipboardManager.setPrimaryClip(ClipData.newPlainText("aaa", "bbb"));
+                //clear clipboard
+                clipboardManager.setPrimaryClip(ClipData.newPlainText("", ""));
 
                 if (!TextUtils.isEmpty(lastPasteString) && lastPasteString.equals(pasteString))
                     return;
@@ -145,16 +121,6 @@ public class BaseApplication extends Application {
                 } else {
                     Toast.makeText(BaseApplication.this, "NO MATCH!", Toast.LENGTH_SHORT).show();
                 }
-//                ClipData clipData = clipboardManager.getPrimaryClip();
-//                String pasteString = "";
-//                if (clipData != null && clipData.getItemCount() > 0) {
-//                    CharSequence text = clipData.getItemAt(0).getText();
-//                    pasteString = text.toString();
-//                }
-//                if (TextUtils.isEmpty(pasteString)) return;
-//                Toast.makeText(BaseApplication.this, "收到任务:[" + pasteString + "]", Toast.LENGTH_LONG).show();
-
-                //TODO POST
             }
         });
     }
@@ -170,10 +136,10 @@ public class BaseApplication extends Application {
                         .connectTimeout(30, TimeUnit.SECONDS)//设置连接超时时间
                         .readTimeout(30, TimeUnit.SECONDS)//设置读取超时时间
                         .build();
-                String json = String.format("{\"url\":\"%s\"}", url);
+                String json = String.format("{\"share_url\":\"%s\"}", url);
                 RequestBody body = RequestBody.create(json, JSON);
                 Request request = new Request.Builder()
-                        .url("http://27.115.87.106:5015/api/caches/video/clone/" + String.valueOf(System.currentTimeMillis()))
+                        .url("http://47.98.199.11:5008/do/video_raw_url" + String.valueOf(System.currentTimeMillis()))
                         .post(body)
                         .build();
                 Message msg = handler.obtainMessage(100);
@@ -201,45 +167,6 @@ public class BaseApplication extends Application {
                 case 100:
                     String result = (String) msg.obj;
                     Toast.makeText(BaseApplication.this, result, Toast.LENGTH_LONG).show();
-                    break;
-                case 101:
-                    try {
-                        ClipData clipData = clipboardManager.getPrimaryClip();
-
-                        String pasteString = "";
-                        if (clipData != null && clipData.getItemCount() > 0) {
-                            CharSequence text = clipData.getItemAt(0).getText();
-                            pasteString = text.toString();
-                        }
-                        // if (!status) return;
-                        if (TextUtils.isEmpty(pasteString)) return;
-
-                        clipboardManager.setPrimaryClip(ClipData.newPlainText("aaa", "" + System.currentTimeMillis()));
-
-                        if (!TextUtils.isEmpty(lastPasteString) && lastPasteString.equals(pasteString))
-                            return;
-
-
-                        lastPasteString = pasteString;
-
-                        String pattern = "(https://v.douyin.com).*/";
-                        Pattern r = Pattern.compile(pattern);
-                        Matcher m = r.matcher(pasteString);
-
-                        String shareUrl = null;
-                        if (m.find()) {
-                            shareUrl = m.group(0);
-                            postShareUrl(shareUrl);
-                            Toast.makeText(BaseApplication.this, "收到任务:[" + pasteString + "]", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(BaseApplication.this, "NO MATCH!", Toast.LENGTH_SHORT).show();
-                        }
-                    } finally {
-                        postEditText.setText("");
-                        postEditText.clearFocus();
-                        postEditText.setEnabled(false);
-                        FloatWindow.get().clearFocus();
-                    }
                     break;
                 default:
                     break;

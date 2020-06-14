@@ -91,7 +91,7 @@ print(dedata)
 
 ```
 
-### 服务端功能调用接口文档 ~~Login SmsCode UserInfo~~ ExtractShareUrl DownloadVideo SaveVideo PushVideo
+### 服务端功能调用接口文档 ~~Login SmsCode UserInfo ExtractShareUrl~~ DownloadVideo SaveVideo PushVideo
 ```
 //todo
 
@@ -111,6 +111,11 @@ print(login_result)
 # {'status': 'ok', 'data': { 'x_tt_token': '********', 'session_key': '********'}}
 
 
+headers={"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOlsiMTExMSIsIjE0Il0sImV4cCI6MTU5MjMxMjk4NX0.HK5yeFExgQikvk0NtQKHvWfM88U_Fx5jbhq4bqZo148"}
+json={"share_url":"https://v.douyin.com/Jdpsx7Q/"}
+video_info_result = requests.post("http://47.98.199.11:5008/do/video_raw_url",headers=headers,json=json).json()
+print(video_info_result)
+#{"data":{"author":"红星新闻","url":"https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f070000bridurlp06vruuk1hqog","desc":"浙江温岭槽罐车爆炸监控画面曝光，爆炸车辆经宁波开往温州。"},"status":"ok"}
 ```
 
 
