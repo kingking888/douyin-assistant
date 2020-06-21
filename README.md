@@ -99,7 +99,7 @@ print(dedata)
 
 ```
 
-### 服务端功能调用接口文档 ~~Login SmsCode UserInfo ExtractShareUrl~~ DownloadVideo SaveVideo PushVideo
+### 服务端功能调用接口文档 ~~Login SmsCode UserInfo ExtractShareUrl DownloadVideo SaveVideo PushVideo~~
 ```
 //todo
 
@@ -127,10 +127,6 @@ print(video_info_result)
 ```
 
 
-
-
-#### 感谢两位朋友的赞赏,用来学习交流的TTiktok源码已经分享,源码将不再过多分享了,DDouyin部分有断续。
-
 ## 协议
 
 本项目基于GNU开源协议，不得用于商业用途
@@ -139,11 +135,3 @@ print(video_info_result)
 
 若有侵权请联系删除。
 
-## 支持
-
-  * **您的赞赏是让我加快开发进度的最大鼓励.**
-
-<div>
-  <a><img src="https://github.com/satng/images/blob/master/WX20200520-084311%402x.png" height="30%" width="30%"></a>           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a><img src="https://github.com/satng/images/blob/master/WX20200520-084414%402x.png" height="32%" width="32%"></a>
-</div>
