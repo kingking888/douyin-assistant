@@ -90,13 +90,10 @@ public class BaseApplication extends Application {
             @Override
             public void run() {
                 String video = getVideoRawUrl(url);
-                if (video == null) {
-                    Message msg = handler.obtainMessage(100);
-                    msg.obj = "提交失败!";
-                    handler.sendMessage(msg);
-                    return;
+                if (video != null) {
+                    postMyVideoRecord(video);
                 }
-                postMyVideoRecord(video);
+
             }
 
 
