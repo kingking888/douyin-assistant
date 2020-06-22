@@ -90,7 +90,12 @@ public class BaseApplication extends Application {
             @Override
             public void run() {
                 String video = getVideoRawUrl(url);
-                if (video == null) return;
+                if (video == null) {
+                    Message msg = handler.obtainMessage(100);
+                    msg.obj = "提交失败!";
+                    handler.sendMessage(msg);
+                    return;
+                }
                 postMyVideoRecord(video);
             }
 
@@ -110,8 +115,6 @@ public class BaseApplication extends Application {
         Request request = new Request.Builder()
                 .url("http://47.98.199.11:5008/do/video_upload")
                 .header("token", Utils.token)
-                .header("x_tt_token", "**********")
-                .header("session_key", "**********")
                 .post(body)
                 .build();
         Message msg = handler.obtainMessage(100);
@@ -119,7 +122,7 @@ public class BaseApplication extends Application {
             Response response = client.newCall(request).execute();
             String result = response.body().string();
 
-            msg.obj = "Task提交成功!";
+            msg.obj = "提交成功!";
             handler.sendMessage(msg);
 
         } catch (IOException e) {
@@ -147,8 +150,11 @@ public class BaseApplication extends Application {
             Response response = client.newCall(request).execute();
             String result = response.body().string();
             JSONObject resultObj = new JSONObject(result);
+            JSONObject resultData = resultObj.getJSONObject("data");
+            resultData.put("phone", Utils.phone);
             System.out.println(result);
-            return resultObj.get("data").toString();
+
+            return resultData.toString();
         } catch (IOException | JSONException e) {
             msg.obj = e.getMessage();
             handler.sendMessage(msg);
