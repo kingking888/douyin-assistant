@@ -1,4 +1,6 @@
-# MiMiYaHelper
+# douyin-assistant
+
+If you want to contact with me: kkbbcc@foxmail.com
 
 DDouyin sharp tool,floating window,copy sharp url to get raw video
 
@@ -27,8 +29,8 @@ One key operation copy other people's videos,and publish yourself at the same ti
 ## TTiktok 1105 滑动验证码接口
 ##### 提供滑块x坐标识别 99.99%准确率
 
+
 ## 服务端加解密调用接口文档  Gorgon Xlog TTEncrypt
-##### 后台接口Java开发,个人只需赞赏分摊一点服务器费用就可以免费接口调用,有需要私聊
 
 ```python
 
@@ -119,11 +121,11 @@ print(login_result)
 # {'status': 'ok', 'data': { 'x_tt_token': '********', 'session_key': '********'}}
 
 # video_raw_url 无水印视频
-headers={"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOlsiMTExMSIsIjE0Il0sImV4cCI6MTU5MjMxMjk4NX0.HK5yeFExgQikvk0NtQKHvWfM88U_Fx5jbhq4bqZo148"}
+headers={"token": "***********************"}
 json={"share_url":"https://v.douyin.com/Jdpsx7Q/"}
-video_info_result = requests.post("http://47.98.199.11:5008/do/video_raw_url",headers=headers,json=json).json()
+video_info_result = requests.post("http://**************:5008/do/video_raw_url",headers=headers,json=json).json()
 print(video_info_result)
-#{"data":{"author":"红星新闻","url":"https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f070000bridurlp06vruuk1hqog","desc":"浙江温岭槽罐车爆炸监控画面曝光，爆炸车辆经宁波开往温州。"},"status":"ok"}
+#{"data":{"author":"**********","url":"https://****************/?video_id=v0200f070000bridurlp06vruuk1hqog","desc":"*********。"},"status":"ok"}
 ```
 
 
