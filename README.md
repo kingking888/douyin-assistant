@@ -10,7 +10,7 @@ In Android 10 cannot listen to the clipboard,so we need a EditText on top Window
 Floating window button,click it to download raw video to self cloud.
 
 ## What to do??
-
+<br/>
 One key operation copy other people's videos,and publish yourself at the same time.
 <br/>
 Copy the video of the personal main account with one click, and publish it to the collection of works of his auxiliary account at the same time.
@@ -126,11 +126,8 @@ print(video_info_result)
 ```
 
 
-## 协议
-
-本项目基于GNU开源协议，不得用于商业用途
-
-本项目仅供学习交流使用，本人不承担任何法律责任
-
-若有侵权请联系删除。
+##Agreement
+The project is based on GNU open source agreement and cannot be used for commercial purposes
+This project is for learning and exchange only, and I will not bear any legal responsibility
+In case of infringement, please contact to delete.
 
